@@ -147,12 +147,28 @@ export const constantRoutes = [
   {
     path: '/text-center',
     component: Layout,
+    meta: { title: '在线考试', visible: true, roles: ['student'], icon: 'el-icon-document-copy' },
     children: [{
       path: '/text-center',
       name: 'text-center',
       component: () => import('@/views/exam/student/index'),
-      meta: { title: '试卷中心', visible: true, roles: ['student'], icon: 'el-icon-document-copy' }
-    }]
+        // 'admin',
+        meta: { title: '在线考试', visible: true, roles: ['student'], icon: 'el-icon-tickets' }
+      },
+      {
+        path: '/exam-record',
+        name: 'exam-record',
+        component: () => import('@/views/record/exam/index.vue'),
+        // 'admin',
+        meta: { title: '我的成绩', visible: true, roles: ['student'], icon: 'table' }
+      },
+      {
+          path: '/wrong-book',
+          name: 'wrong-book',
+          component: () => import('@/views/userbook/index'),
+          meta: { title: '错题本', visible: true, roles: ['student'], icon: 'el-icon-notebook-1' }
+      }
+    ]
   },
   {
     path: '/start-exam',
@@ -164,7 +180,7 @@ export const constantRoutes = [
   {
     path: '/online-exam',
     component: Layout,
-    meta: { title: '在线考试', icon: 'el-icon-folder-opened', visible: true, roles: ['student'], requireAuth: true },
+    meta: { title: '在线刷题', icon: 'el-icon-folder-opened', visible: true, roles: ['student'], requireAuth: true },
 
     children: [
       {
@@ -172,21 +188,14 @@ export const constantRoutes = [
         name: 'exercise-center',
         component: () => import('@/views/exercise/index'),
         // 'admin',
-        meta: { title: '在线考试', visible: true, roles: ['student'], icon: 'el-icon-tickets' }
-      },
-      {
-        path: '/exam-record',
-        name: 'exam-record',
-        component: () => import('@/views/record/exam/index.vue'),
-        // 'admin',
-        meta: { title: '考试记录', visible: true, roles: ['student'], icon: 'table' }
+        meta: { title: '在线题库', visible: true, roles: ['student'], icon: 'el-icon-tickets' }
       },
       {
         path: '/exercise-record',
         name: 'exercise-record',
         // 'admin',
         component: () => import('@/views/record/exercise/index.vue'),
-        meta: { title: '我的成绩', visible: true, roles: ['student'], icon: 'tree' }
+        meta: { title: '刷题记录', visible: true, roles: ['student'], icon: 'tree' }
       }
     ]
   },
@@ -242,16 +251,6 @@ export const constantRoutes = [
       hidden: true,
       component: () => import('@/views/record/exercise/newk'),
       meta: { title: '刷题记录查看', visible: true, roles: ['teacher', 'admin', 'student'], icon: 'dashboard' }
-    }]
-  },
-  {
-    path: '/wrong-book',
-    component: Layout,
-    children: [{
-      path: '/wrong-book',
-      name: 'wrong-book',
-      component: () => import('@/views/userbook/index'),
-      meta: { title: '错题本', visible: true, roles: ['student'], icon: 'el-icon-notebook-1' }
     }]
   },
   {

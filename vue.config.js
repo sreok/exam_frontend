@@ -13,7 +13,7 @@ const name = process.env.VUE_APP_TITLE || defaultSettings.title || '网上在线
 // For example, Mac: sudo npm run
 // You can change the port by the following methods:
 // port = 9528 npm run dev OR npm run dev --port = 9528
-const port = process.env.port || process.env.npm_config_port || 9527 // dev port
+const port = process.env.port || process.env.npm_config_port || 8080 // dev port
 
 // All configuration item explanations can be find in https://cli.vuejs.org/config/
 module.exports = {
@@ -42,7 +42,7 @@ module.exports = {
     // 前端跨域
     proxy: {
       '/api': {
-        target: 'http://127.0.0.1:8080',
+        target: 'http://127.0.0.1:8888',
         changeOrigin: true,
         pathRewrite: {
           '^/api': '/api'
